@@ -1,0 +1,19 @@
+/* Libre Baskerville - Regular */
+@font-face {
+  font-family: 'Libre Baskerville';
+  src: url('./assets/fonts/libre-baskerville/libre-baskerville-regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* Libre Baskerville - Bold */
+@font-face {
+  font-family: 'Libre Baskerville';
+  src: url('./assets/fonts/libre-baskerville/libre-baskerville-bold.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+}
+
+html {
+  font-family: 'Libre Baskerville', serif;
+}
