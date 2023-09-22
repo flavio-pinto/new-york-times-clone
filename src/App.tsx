@@ -1,11 +1,12 @@
 import 'normalize.css'
 import 'bootstrap/dist/css/bootstrap-grid.min.css'
 import './App.css'
+import Header from './components/Header/Header'
 
 function App() {
   return (
     <div className='App'>
-      <h1>New York Times</h1>
+      <Header />
     </div>
   )
 }

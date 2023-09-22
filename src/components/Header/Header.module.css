@@ -1,0 +1,34 @@
+@font-face {
+  font-family: 'Chomsky';
+  src: url('../../assets/fonts/chomsky/chomsky.woff') format('truetype');
+}
+
+header {
+  margin: 0 auto;
+  padding: 20px;
+  max-width: 1200px;
+}
+
+h1 {
+  font-family: 'Chomsky';
+  font-size: 25px;
+  font-weight: 300;
+  margin: 0 auto;
+}
+
+@media screen and (min-width: 740px) {
+  header {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  h1 {
+    font-size: 30px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  h1 {
+    font-size: 58px;
+  }
+}
