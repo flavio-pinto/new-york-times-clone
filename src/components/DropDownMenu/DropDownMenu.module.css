@@ -1,0 +1,8 @@
+.DropDownMenu {
+  width: 100%;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: green;
+  z-index: 10;
+}
