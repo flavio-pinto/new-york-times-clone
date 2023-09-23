@@ -3,7 +3,7 @@ import styles from './DropDownMenu.module.css'
 
 /* type Props = {} */
 
-const HamburgerMenu = (/* props: Props */) => {
+const DropDownMenu = (/* props: Props */) => {
   return (
     <div className={styles.DropDownMenu}>
       <ul className={styles.DropDownMenuList}>
@@ -13,4 +13,4 @@ const HamburgerMenu = (/* props: Props */) => {
   )
 }
 
-export default HamburgerMenu
+export default DropDownMenu
