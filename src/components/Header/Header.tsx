@@ -3,6 +3,7 @@ import { FaUser } from "react-icons/fa";
 import DropDownMenu from "../DropDownMenu/DropDownMenu";
 import styles from "./Header.module.css";
 import { useState } from "react";
+import SearchBar from "../SearchBar/SearchBar";
 /* type Props = {} */
 
 const Header = (/* props: Props */) => {
@@ -24,6 +25,8 @@ const Header = (/* props: Props */) => {
               />
             )}
             {isMenuOpen && <DropDownMenu />}
+
+            <SearchBar classes="d-none d-lg-flex" />
           </div>
           <div className="col-8">
             <h1 className={`${styles.h1}`}>The New York Times</h1>
