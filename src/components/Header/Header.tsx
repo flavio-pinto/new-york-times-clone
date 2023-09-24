@@ -1,5 +1,6 @@
 import { RxHamburgerMenu, RxCross1 } from "react-icons/rx";
 import { FaUser } from "react-icons/fa";
+import { BsSearch } from "react-icons/bs";
 import DropDownMenu from "../DropDownMenu/DropDownMenu";
 import styles from "./Header.module.css";
 import { useState } from "react";
@@ -13,35 +14,49 @@ const Header = (/* props: Props */) => {
     setIsMenuOpen(!isMenuOpen);
   };
 
+  const date = new Date().toLocaleDateString("en-En", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+    weekday: "long",
+  });
+
   return (
     <header className="d-flex justify-content-start align-items-center">
       <div className="container">
         <div className="row">
-          <div className="col-2 align-self-center d-flex justify-content-start ps-0">
+          <div className="col-2 align-self-center d-flex justify-content-start ps-0 flex-column">
             {!isMenuOpen && (
-              <RxHamburgerMenu
-                className="d-lg-none"
-                onClick={() => toggleDropDown()}
-              />
+              <div className="d-flex">
+                <RxHamburgerMenu
+                  size={25}
+                  className="d-lg-none me-2"
+                  onClick={() => toggleDropDown()}
+                />
+                <BsSearch
+                  size={25}
+                  className="d-lg-none"
+                  onClick={() => toggleDropDown()}
+                />
+              </div>
             )}
             {isMenuOpen && <DropDownMenu />}
 
             <SearchBar classes="d-none d-lg-flex" />
+            <p>{date}</p>
           </div>
           <div className="col-8">
             <h1 className={`${styles.h1}`}>The New York Times</h1>
           </div>
           <div className="col-2 align-self-center d-flex justify-content-end pe-0">
-            {isMenuOpen ? (
-              <RxCross1 onClick={() => toggleDropDown()} />
-            ) : (
-              <FaUser className="d-lg-none" />
+            {isMenuOpen && (
+              <RxCross1 size={25} onClick={() => toggleDropDown()} />
             )}
           </div>
         </div>
       </div>
     </header>
-  )
+  );
 
   {
     /* <header className="d-flex justify-content-start align-items-center">
@@ -63,6 +78,6 @@ const Header = (/* props: Props */) => {
       </div>
     </header>*/
   }
-}
+};
 
 export default Header;
