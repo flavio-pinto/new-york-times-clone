@@ -1,7 +1,7 @@
 import { ReactNode, createContext } from "react";
 
 // Definisci il tipo per le sezioni
-type SectionType =
+export type SectionType =
   | "home"
   | "world"
   | "us"
@@ -19,9 +19,9 @@ type SectionType =
   | "realestate";
 
 // Definisci il tipo per il contesto
-interface AppContextType {
+export interface AppContextType {
   sections: SectionType[];
-  formatSection: (section: SectionType) => string;
+  formatSectionName: (section: SectionType) => string;
 }
 
 // Crea il contesto
@@ -47,7 +47,7 @@ const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
     "realestate",
   ];
 
-  const formatSection = (section: SectionType): string => {
+  const formatSectionName = (section: SectionType): string => {
     switch (section) {
       case "us":
         return "U.S.";
@@ -63,7 +63,7 @@ const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   };
 
   return (
-    <AppContext.Provider value={{ sections, formatSection }}>
+    <AppContext.Provider value={{ sections, formatSectionName }}>
       {children}
     </AppContext.Provider>
   );

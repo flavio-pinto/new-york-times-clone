@@ -16,7 +16,7 @@ const Header = (/* props: Props */) => {
 
   const date = new Date().toLocaleDateString("en-En", {
     year: "numeric",
-    month: "long",
+    month: "short",
     day: "numeric",
     weekday: "long",
   });
