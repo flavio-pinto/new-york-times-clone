@@ -8,12 +8,13 @@
 
 .searchBarDropDown {
   width: 200px;
-  height: 30px;
+  height: 40px;
   margin: 0 auto;
 }
 
 .searchBarDropDown button {
-  height: 30px;
+  height: 40px;
+  width: 50px;
 }
 
 h3 {
