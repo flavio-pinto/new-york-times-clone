@@ -5,6 +5,7 @@ import DropDownMenu from "../DropDownMenu/DropDownMenu";
 import styles from "./Header.module.css";
 import { useState } from "react";
 import SearchBar from "../SearchBar/SearchBar";
+import Navbar from "../Navbar/Navbar";
 /* type Props = {} */
 
 const Header = (/* props: Props */) => {
@@ -22,7 +23,7 @@ const Header = (/* props: Props */) => {
   });
 
   return (
-    <header className="d-flex justify-content-start align-items-center">
+    <header className="d-flex justify-content-start align-items-center flex-column">
       <div className="container">
         <div className="row">
           <div className="col-2 align-self-center d-flex justify-content-start ps-0 flex-column">
@@ -43,7 +44,7 @@ const Header = (/* props: Props */) => {
             {isMenuOpen && <DropDownMenu />}
 
             <SearchBar classes="d-none d-lg-flex" />
-            <p>{date}</p>
+            <p className={styles.date}>{date}</p>
           </div>
           <div className="col-8">
             <h1 className={`${styles.h1}`}>The New York Times</h1>
@@ -55,6 +56,7 @@ const Header = (/* props: Props */) => {
           </div>
         </div>
       </div>
+      <Navbar />
     </header>
   );
 

@@ -19,11 +19,11 @@ const DropDownMenu = () => {
   return (
     <div className={`${styles.DropDownMenu} py-4`}>
       <SearchBar classes={`${styles.searchBarDropDown} d-flex`} />
-      <h3>News</h3>
-      <ul>
+      <h3 className={styles.dropdownNewsTitle}>News</h3>
+      <ul className={styles.dropdownList}>
         {sections.map((section: SectionType, i: number) => {
           return (
-            <li key={i}>{formatSectionName(section)}</li>
+            <li className={styles.dropdownListItem} key={i}>{formatSectionName(section)}</li>
           )
         })}
       </ul>
