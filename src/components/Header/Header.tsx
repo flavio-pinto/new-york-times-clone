@@ -1,5 +1,4 @@
 import { RxHamburgerMenu, RxCross1 } from "react-icons/rx";
-import { FaUser } from "react-icons/fa";
 import { BsSearch } from "react-icons/bs";
 import DropDownMenu from "../DropDownMenu/DropDownMenu";
 import styles from "./Header.module.css";
@@ -59,27 +58,6 @@ const Header = (/* props: Props */) => {
       <Navbar />
     </header>
   );
-
-  {
-    /* <header className="d-flex justify-content-start align-items-center">
-      <div className={styles.headerLeft}>
-        {!isMenuOpen && (
-          <RxHamburgerMenu className="d-lg-none" onClick={() => toggleDropDown()} />
-        )}
-      </div>
-      {isMenuOpen && (
-        <DropDownMenu />
-      )}
-      <h1 className={`${styles.h1}`}>The New York Times</h1>
-      <div className={`${styles.headerRight} d-`}>
-        {isMenuOpen ? ( 
-          <RxCross1 onClick={() => toggleDropDown()} />
-        ) : (
-          <FaUser />
-        )}
-      </div>
-    </header>*/
-  }
 };
 
 export default Header;
