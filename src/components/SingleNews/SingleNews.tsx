@@ -12,7 +12,7 @@ const SingleNews = (props: SingleNewsProps) => {
     <article className={styles.articleWrapper}>
       <Container>
         <Row>
-          <Col xs={props.isSmall ? 7 : 5}>
+          <Col xs={props.isSmall ? 7 : 5} className="ps-lg-0">
             <h3
               className={
                 props.isSmall ? styles.articleTitleSmall : styles.articleTitle
