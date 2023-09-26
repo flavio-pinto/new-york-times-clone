@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react"
 import axios from "axios"
 import { useNavigate } from "react-router-dom";
+import { News } from "../interfaces/News";
 
 const useFetchNewsData = (apiUrl: string) => {
-  const [news, setNews] = useState([])
+  const [news, setNews] = useState<News[] | []>([])
   const [isDataReady, setIsDataReady] = useState<boolean>(false)
   const navigate = useNavigate()
 

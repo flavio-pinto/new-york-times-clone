@@ -1,0 +1,31 @@
+.articleWrapper {
+  border-bottom: 1px solid black;
+  padding-bottom: 24px;
+  margin-bottom: 26px;
+}
+
+.articleTitle {
+  font-size: 22px;
+  line-height: 25px;
+  margin: 0;
+}
+
+.articleTitleSmall {
+  font-size: 16px;
+  line-height: 22px;
+  margin: 0;
+}
+
+.articlePreview {
+  font-size: 14px;
+  line-height: 19px;
+}
+
+.byLine {
+  font-weight: 700;
+  font-style: italic;
+}
+
+.articleImg {
+  max-width: 100%;
+}
