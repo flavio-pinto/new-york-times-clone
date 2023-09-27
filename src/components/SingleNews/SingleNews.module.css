@@ -1,7 +1,15 @@
 .articleWrapper {
-  border-bottom: 1px solid #e6e6e6;
+  border-bottom: 1px solid #c7c7c7;
   padding-bottom: 24px;
   margin-bottom: 26px;
+}
+
+.articleHeightHandler {
+  max-height: 830px;
+}
+
+.articleHeightHandlerSmall {
+  max-height: 830px;
 }
 
 .articleTitle {
@@ -11,8 +19,8 @@
 }
 
 .articleTitleSmall {
-  font-size: 16px;
-  line-height: 22px;
+  font-size: 14px;
+  line-height: 15px;
   margin: 0;
 }
 
@@ -24,6 +32,12 @@
 .byLine {
   font-weight: 700;
   font-style: italic;
+}
+
+.byLineSmall {
+  display: block;
+  font-size: 10px;
+  margin-top: 15px;
 }
 
 .articleImg {

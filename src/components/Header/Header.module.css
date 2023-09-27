@@ -51,8 +51,9 @@ h1 {
 
 @media screen and (min-width: 992px) {
   header {
-    padding: 3%;
+    /* padding: 3%; */
     border-bottom: none;
+    margin-bottom: 0;
   }
 
   h1 {

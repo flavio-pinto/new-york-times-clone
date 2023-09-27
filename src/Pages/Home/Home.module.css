@@ -4,12 +4,21 @@
   padding: 8px 15px 3px;
 }
 
+.mainDate {
+  font-size: 12px;
+  font-weight: bold;
+  text-align: center;
+  border-bottom: 1px solid #abbdc9;
+  margin: 0 0 50px;
+  padding: 20px 0 20px;
+}
+
 .mainRowCorrect {
   max-width: 1200px;
 }
 
 .verticalLine {
-  border-right: 1px solid #e6e6e6;
+  border-right: 1px solid #c7c7c7;
 }
 
 @media screen and (min-width: 768px) {
@@ -19,7 +28,11 @@
 }
 
 @media screen and (min-width: 992px) {
-  .mainNewsSection {
+  /* .mainNewsSection {
     padding: 3%;
+  } */
+
+  .verticalLine {
+    border-right: 1px solid #c7c7c7;
   }
 }

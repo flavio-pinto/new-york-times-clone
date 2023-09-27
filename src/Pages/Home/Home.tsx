@@ -1,41 +1,64 @@
 import SingleNews from "../../components/SingleNews/SingleNews";
-import useFetchNewsData from "../../services/fetchNewsData"
+import useFetchNewsData from "../../services/fetchNewsData";
 import { News } from "../../interfaces/News";
-import styles from "./Home.module.css"
+import styles from "./Home.module.css";
 import { Col, Container, Row } from "react-bootstrap";
 /* type Props = {} */
 
 const Home = (/* props: Props */) => {
-  const url = `https://api.nytimes.com/svc/topstories/v2/home.json?api-key=${import.meta.env.VITE_API_KEY}`
-  const { isDataReady, news } = useFetchNewsData(url)
+  const url = `https://api.nytimes.com/svc/topstories/v2/home.json?api-key=${
+    import.meta.env.VITE_API_KEY
+  }`;
+  const { isDataReady, news } = useFetchNewsData(url);
+
+  const date = new Date().toLocaleDateString("en-En", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+    weekday: "long",
+  });
 
   console.log(news.results);
-  
+
   if (isDataReady) {
     const totalNewsCount = news.results.length;
-    const leftColumnCount = Math.ceil(totalNewsCount * 0.25);
+    const leftColumnCount = Math.ceil(totalNewsCount * 0.3);
+    const isSmallViewport = window.innerWidth < 992;
 
     return (
-      <main className={styles.mainNewsSection}>
-        <Container>
-          <Row className={styles.mainRowCorrect}>
-            <Col lg={9} className={`${styles.verticalLine} ps-lg-0 pe-lg-4`}>
-              {news.results.slice(0, leftColumnCount).map((article: News, index: number) => (
-                <SingleNews key={index} article={article} isSmall={false}/>
-              ))}
-            </Col>
-            <Col lg={3} className="ps-lg-3">
-              {news.results.slice(leftColumnCount).map((article, index) => (
-                <SingleNews key={index} article={article} isSmall={true}/>
-              ))}
-            </Col>
-          </Row>
-        </Container>
-      </main>
+      <>
+        <p className={`${styles.mainDate} d-lg-none`}>{date}</p>
+        <main className={styles.mainNewsSection}>
+          <Container>
+            <Row className={styles.mainRowCorrect}>
+              <Col
+                lg={isSmallViewport ? 12 : 9}
+                className={`${
+                  !isSmallViewport && styles.verticalLine
+                } ps-lg-0 pe-lg-3`}
+              >
+                {news.results
+                  .slice(
+                    0,
+                    !isSmallViewport ? leftColumnCount : news.results.length - 1
+                  )
+                  .map((article: News, index: number) => (
+                    <SingleNews key={index} article={article} isSmall={false} />
+                  ))}
+              </Col>
+              <Col lg={3} className="pe-lg-0 ps-lg-3 d-none d-lg-block">
+                {news.results.slice(leftColumnCount).map((article, index) => (
+                  <SingleNews key={index} article={article} isSmall={true} />
+                ))}
+              </Col>
+            </Row>
+          </Container>
+        </main>
+      </>
     );
   } else {
     return <div>Spinner</div>;
   }
-}
+};
 
-export default Home
+export default Home;
