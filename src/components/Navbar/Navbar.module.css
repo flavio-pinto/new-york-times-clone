@@ -12,3 +12,16 @@
   text-transform: capitalize;
   font-size: 14px;
 }
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+#sidebar a.active {
+  color: red!important;
+}
+
+#sidebar a.pending {
+  color: green!important;
+}

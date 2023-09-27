@@ -1,6 +1,8 @@
+import { ListGroup } from "react-bootstrap";
 import { AppContextType, SectionType } from "../../contexts/context";
-import { useGlobalContext } from "../../contexts/globalContext"
-import styles from './Navbar.module.css'
+import { useGlobalContext } from "../../contexts/globalContext";
+import styles from "./Navbar.module.css";
+import { NavLink } from "react-router-dom";
 
 /* type Props = {} */
 
@@ -8,22 +10,36 @@ const Navbar = (/* props: Props */) => {
   const context = useGlobalContext();
 
   if (!context) {
-    return null; 
+    return null;
   }
 
   const { sections, formatSectionName }: AppContextType = context;
 
   return (
     <nav className={`${styles.navbar} d-none d-lg-block`}>
-      <ul className={`d-flex justify-content-between ${styles.navbarList}`}>
+      <ListGroup
+        className={`d-flex justify-content-between ${styles.navbarList}`}
+      >
         {sections.map((section: SectionType, i: number) => {
           return (
-            <li key={i}>{formatSectionName(section)}</li>
-          )
+            <ListGroup.Item as="li" key={i}>
+              <NavLink
+                style={({ isActive, isPending }) => {
+                  return {
+                    fontWeight: isActive ? "bold" : "",
+                    color: isPending ? "gray" : "black",
+                  };
+                }}
+                to={section === "home" ? "/" : `section/${section}`}
+              >
+                {formatSectionName(section)}
+              </NavLink>
+            </ListGroup.Item>
+          );
         })}
-      </ul>
+      </ListGroup>
     </nav>
-  )
-}
+  );
+};
 
-export default Navbar
+export default Navbar;
