@@ -19,12 +19,12 @@ const Home = (/* props: Props */) => {
       <main className={styles.mainNewsSection}>
         <Container>
           <Row className={styles.mainRowCorrect}>
-            <Col lg={9} className="ps-lg-0">
+            <Col lg={9} className={`${styles.verticalLine} ps-lg-0 pe-lg-4`}>
               {news.results.slice(0, leftColumnCount).map((article: News, index: number) => (
                 <SingleNews key={index} article={article} isSmall={false}/>
               ))}
             </Col>
-            <Col lg={3}>
+            <Col lg={3} className="ps-lg-3">
               {news.results.slice(leftColumnCount).map((article, index) => (
                 <SingleNews key={index} article={article} isSmall={true}/>
               ))}
