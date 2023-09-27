@@ -1,5 +1,7 @@
 import { Container, Row, Col } from "react-bootstrap";
 import { News } from "../../interfaces/News";
+import PlaceholderSmall from "../../assets/images/placeholder-small.png"
+import Placeholder from "../../assets/images/placeholder.png"
 import styles from "./SingleNews.module.css";
 
 type SingleNewsProps = {
@@ -8,6 +10,8 @@ type SingleNewsProps = {
 };
 
 const SingleNews = (props: SingleNewsProps) => {
+  console.log(props.article);
+  
   return (
     <article className={styles.articleWrapper}>
       <Container>
@@ -38,13 +42,13 @@ const SingleNews = (props: SingleNewsProps) => {
               className={styles.articleImg}
               src={
                 props.isSmall
-                  ? props.article.multimedia[2].url
-                  : props.article.multimedia[0].url
+                  ? props.article.multimedia ? props.article.multimedia[2].url : PlaceholderSmall
+                  : props.article.multimedia ? props.article.multimedia[0].url : Placeholder
               }
               alt={
                 props.isSmall
-                  ? props.article.multimedia[2].caption
-                  : props.article.multimedia[0].caption
+                  ? props.article.multimedia ? props.article.multimedia[2].caption : "placeholder image"
+                  : props.article.multimedia ? props.article.multimedia[0].caption : "placeholder image"
               }
             />
           </Col>

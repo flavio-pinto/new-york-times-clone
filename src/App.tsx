@@ -3,7 +3,7 @@ import 'normalize.css'
 import 'bootstrap/dist/css/bootstrap-grid.min.css'
 import './App.css'
 import Header from './components/Header/Header'
-import Home from "./Pages/Home/Home";
+import HomeAndSectionsPage from "./Pages/HomeAndSectionsPage/HomeAndSectionsPage";
 import Error from "./Pages/Error/Error";
 
 function App() {
@@ -12,7 +12,8 @@ function App() {
       <Router>
         <Header />
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<HomeAndSectionsPage />} />
+          <Route path="/section/:sectionName" element={<HomeAndSectionsPage />} />
           <Route path="*" element={<Error />} />
         </Routes>
       </Router>

@@ -26,8 +26,6 @@ const useFetchNewsData = (apiUrl: string) => {
     fetchData()
   }, [navigate, apiUrl])
 
-  
-
   return {isDataReady, news}
 }
 

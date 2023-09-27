@@ -1,14 +1,18 @@
 import SingleNews from "../../components/SingleNews/SingleNews";
 import useFetchNewsData from "../../services/fetchNewsData";
 import { News } from "../../interfaces/News";
-import styles from "./Home.module.css";
+import styles from "./HomeAndSectionsPage.module.css";
 import { Col, Container, Row } from "react-bootstrap";
+import { useParams } from "react-router-dom";
 /* type Props = {} */
 
 const Home = (/* props: Props */) => {
-  const url = `https://api.nytimes.com/svc/topstories/v2/home.json?api-key=${
+  const { sectionName } = useParams()
+
+  const url = `https://api.nytimes.com/svc/topstories/v2/${!sectionName ? 'home' : sectionName}.json?api-key=${
     import.meta.env.VITE_API_KEY
   }`;
+
   const { isDataReady, news } = useFetchNewsData(url);
 
   const date = new Date().toLocaleDateString("en-En", {
@@ -16,8 +20,9 @@ const Home = (/* props: Props */) => {
     month: "long",
     day: "numeric",
     weekday: "long",
-  });
+  })
 
+  console.log(sectionName)
   console.log(news.results);
 
   if (isDataReady) {
