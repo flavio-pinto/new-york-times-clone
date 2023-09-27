@@ -3,7 +3,7 @@ import useFetchNewsData from "../../services/fetchNewsData";
 import { News } from "../../interfaces/News";
 import styles from "./HomeAndSectionsPage.module.css";
 import { Col, Container, Row } from "react-bootstrap";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 /* type Props = {} */
 
 const Home = (/* props: Props */) => {
@@ -48,12 +48,12 @@ const Home = (/* props: Props */) => {
                     !isSmallViewport ? leftColumnCount : news.results.length - 1
                   )
                   .map((article: News, index: number) => (
-                    <SingleNews key={index} article={article} isSmall={false} />
+                    <Link key={index} target="_blank" to={article.url}><SingleNews article={article} isSmall={false} /></Link>
                   ))}
               </Col>
               <Col lg={3} className="pe-lg-0 ps-lg-3 d-none d-lg-block">
                 {news.results.slice(leftColumnCount).map((article, index) => (
-                  <SingleNews key={index} article={article} isSmall={true} />
+                  <Link to={article.url} target="_blank" key={index}><SingleNews article={article} isSmall={true} /></Link>
                 ))}
               </Col>
             </Row>
