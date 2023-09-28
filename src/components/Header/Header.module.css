@@ -26,6 +26,12 @@ h1 {
   text-align: right;
 }
 
+.currentSection {
+  font-weight: bold;
+  font-size: 20px;
+  text-transform: capitalize;
+}
+
 .date {
   font-size: 10px;
   font-weight: bold;

@@ -2,5 +2,11 @@ import { useContext } from "react";
 import { AppContext } from "./context";
 
 export const useGlobalContext = () => {
-  return useContext(AppContext);
+  const context = useContext(AppContext);
+
+  if (!context) {
+    throw new Error("useGlobalContext must be used within an AppProvider");
+  }
+
+  return context;
 };

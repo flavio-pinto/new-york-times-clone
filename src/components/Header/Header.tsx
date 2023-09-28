@@ -9,10 +9,13 @@ import { useState } from "react";
 import SearchBar from "../SearchBar/SearchBar";
 import Navbar from "../Navbar/Navbar";
 import { NavLink } from 'react-router-dom';
+import { useGlobalContext } from '../../contexts/globalContext';
+import { SectionType } from '../../contexts/context';
 /* type Props = {} */
 
 const Header = (/* props: Props */) => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const { currentSection, formatSectionName } = useGlobalContext()
 
   const toggleDropDown = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -53,6 +56,7 @@ const Header = (/* props: Props */) => {
             <NavLink to='/'><h1 className={`${styles.h1}`}>The New York Times</h1></NavLink>
           </Col>
           <Col xs={2} className="align-self-center d-flex justify-content-end pe-0">
+            <p className={`${styles.currentSection} d-none d-lg-block`}>{formatSectionName(currentSection as SectionType)}</p>
             {isMenuOpen && (
               <RxCross1 size={25} onClick={() => toggleDropDown()} />
             )}

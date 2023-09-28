@@ -5,10 +5,22 @@ import styles from "./HomeAndSectionsPage.module.css";
 import { Col, Container, Row } from "react-bootstrap";
 import { Link, useParams } from "react-router-dom";
 import { RingLoader } from "react-spinners";
+import { useGlobalContext } from "../../contexts/globalContext";
+import { useEffect } from "react";
+import { SectionType } from "../../contexts/context";
 /* type Props = {} */
 
-const Home = (/* props: Props */) => {
-  const { sectionName } = useParams();
+const HomeAndSectionsPage = (/* props: Props */) => {
+  const { sectionName } = useParams()
+  const { setCurrentSection } = useGlobalContext()
+
+  useEffect(() => {
+    if (sectionName) {
+      setCurrentSection(sectionName as SectionType); // Aggiungi l'assertion as SectionType
+    } else {
+      setCurrentSection(null);
+    }
+  }, [sectionName, setCurrentSection]);
 
   const url = `https://api.nytimes.com/svc/topstories/v2/${
     !sectionName ? "home" : sectionName
@@ -34,6 +46,7 @@ const Home = (/* props: Props */) => {
     return (
       <>
         <p className={`${styles.mainDate} d-lg-none`}>{date}</p>
+        <h2 className={`${styles.currentSection} d-block d-lg-none`}>{sectionName}</h2>
         <main className={styles.mainNewsSection}>
           <Container>
             <Row className={styles.mainRowCorrect}>
@@ -77,4 +90,4 @@ const Home = (/* props: Props */) => {
   }
 };
 
-export default Home;
+export default HomeAndSectionsPage;
