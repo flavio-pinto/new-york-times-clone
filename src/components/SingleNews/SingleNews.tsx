@@ -10,8 +10,6 @@ type SingleNewsProps = {
 };
 
 const SingleNews = (props: SingleNewsProps) => {
-  console.log(props.article);
-  
   return (
     <article className={styles.articleWrapper}>
       <Container>

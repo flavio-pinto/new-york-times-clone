@@ -23,10 +23,10 @@ const Home = (/* props: Props */) => {
   })
 
   console.log(sectionName)
-  console.log(news.results);
+  console.log(news);
 
   if (isDataReady) {
-    const totalNewsCount = news.results.length;
+    const totalNewsCount = news.length;
     const leftColumnCount = Math.ceil(totalNewsCount * 0.3);
     const isSmallViewport = window.innerWidth < 992;
 
@@ -42,17 +42,17 @@ const Home = (/* props: Props */) => {
                   !isSmallViewport && styles.verticalLine
                 } ps-lg-0 pe-lg-3`}
               >
-                {news.results
+                {news
                   .slice(
                     0,
-                    !isSmallViewport ? leftColumnCount : news.results.length - 1
+                    !isSmallViewport ? leftColumnCount : news.length - 1
                   )
                   .map((article: News, index: number) => (
                     <Link key={index} target="_blank" to={article.url}><SingleNews article={article} isSmall={false} /></Link>
                   ))}
               </Col>
               <Col lg={3} className="pe-lg-0 ps-lg-3 d-none d-lg-block">
-                {news.results.slice(leftColumnCount).map((article, index) => (
+                {news.slice(leftColumnCount).map((article, index) => (
                   <Link to={article.url} target="_blank" key={index}><SingleNews article={article} isSmall={true} /></Link>
                 ))}
               </Col>

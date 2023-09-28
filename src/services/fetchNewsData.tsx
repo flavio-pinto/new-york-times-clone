@@ -15,7 +15,8 @@ const useFetchNewsData = (apiUrl: string) => {
     const fetchData = async () => {
       try {
         const response = await axios.get(apiUrl);
-        setNews(response.data);
+        console.log(response.data)
+        setNews(response.data.results);
         setIsDataReady(true);
       } catch (error) {
         console.error(error);
