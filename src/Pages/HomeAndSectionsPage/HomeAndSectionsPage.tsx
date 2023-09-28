@@ -4,14 +4,15 @@ import { News } from "../../interfaces/News";
 import styles from "./HomeAndSectionsPage.module.css";
 import { Col, Container, Row } from "react-bootstrap";
 import { Link, useParams } from "react-router-dom";
+import { RingLoader } from "react-spinners";
 /* type Props = {} */
 
 const Home = (/* props: Props */) => {
-  const { sectionName } = useParams()
+  const { sectionName } = useParams();
 
-  const url = `https://api.nytimes.com/svc/topstories/v2/${!sectionName ? 'home' : sectionName}.json?api-key=${
-    import.meta.env.VITE_API_KEY
-  }`;
+  const url = `https://api.nytimes.com/svc/topstories/v2/${
+    !sectionName ? "home" : sectionName
+  }.json?api-key=${import.meta.env.VITE_API_KEY}`;
 
   const { isDataReady, news } = useFetchNewsData(url);
 
@@ -20,9 +21,9 @@ const Home = (/* props: Props */) => {
     month: "long",
     day: "numeric",
     weekday: "long",
-  })
+  });
 
-  console.log(sectionName)
+  console.log(sectionName);
   console.log(news);
 
   if (isDataReady) {
@@ -48,12 +49,16 @@ const Home = (/* props: Props */) => {
                     !isSmallViewport ? leftColumnCount : news.length - 1
                   )
                   .map((article: News, index: number) => (
-                    <Link key={index} target="_blank" to={article.url}><SingleNews article={article} isSmall={false} /></Link>
+                    <Link key={index} target="_blank" to={article.url}>
+                      <SingleNews article={article} isSmall={false} />
+                    </Link>
                   ))}
               </Col>
               <Col lg={3} className="pe-lg-0 ps-lg-3 d-none d-lg-block">
                 {news.slice(leftColumnCount).map((article, index) => (
-                  <Link to={article.url} target="_blank" key={index}><SingleNews article={article} isSmall={true} /></Link>
+                  <Link to={article.url} target="_blank" key={index}>
+                    <SingleNews article={article} isSmall={true} />
+                  </Link>
                 ))}
               </Col>
             </Row>
@@ -62,7 +67,13 @@ const Home = (/* props: Props */) => {
       </>
     );
   } else {
-    return <div>Spinner</div>;
+    return (
+      <RingLoader
+        className="d-block mx-auto my-5"
+        size={180}
+        aria-label="Loading Spinner"
+      />
+    );
   }
 };
 
