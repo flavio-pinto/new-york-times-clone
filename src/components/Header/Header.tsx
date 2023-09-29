@@ -47,7 +47,7 @@ const Header = (/* props: Props */) => {
                   />
                 </div>
               )}
-              {isMenuOpen && <DropDownMenu />}
+              {isMenuOpen && <DropDownMenu toggleDropDown={toggleDropDown} />}
   
               <SearchBar classes="d-none d-lg-flex" />
               <p className={styles.date}>{date}</p>

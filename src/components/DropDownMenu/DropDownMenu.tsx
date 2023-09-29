@@ -5,9 +5,11 @@ import styles from "./DropDownMenu.module.css";
 import { AppContextType, SectionType } from "../../contexts/context";
 import { NavLink } from "react-router-dom";
 
-/* type Props = {} */
+type Props = {
+  toggleDropDown: () => void;
+}
 
-const DropDownMenu = () => {
+const DropDownMenu = (props: Props) => {
   const context = useGlobalContext();
 
   if (!context) {
@@ -32,6 +34,7 @@ const DropDownMenu = () => {
                   };
                 }}
                 to={section === "home" ? "/" : `section/${section}`}
+                onClick={() => props.toggleDropDown()}
               >
                 {formatSectionName(section)}
               </NavLink>
