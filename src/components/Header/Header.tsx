@@ -5,7 +5,7 @@ import { RxHamburgerMenu, RxCross1 } from "react-icons/rx";
 import { BsSearch } from "react-icons/bs";
 import DropDownMenu from "../DropDownMenu/DropDownMenu";
 import styles from "./Header.module.css";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import SearchBar from "../SearchBar/SearchBar";
 import Navbar from "../Navbar/Navbar";
 import { NavLink } from 'react-router-dom';
@@ -16,6 +16,7 @@ import { SectionType } from '../../contexts/context';
 const Header = (/* props: Props */) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const { currentSection, formatSectionName } = useGlobalContext()
+  const headerRef = useRef(null)
 
   const toggleDropDown = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -29,7 +30,7 @@ const Header = (/* props: Props */) => {
   });
 
   return (
-    <header className="d-flex justify-content-start align-items-center flex-column">
+    <header ref={headerRef} className="d-flex justify-content-start align-items-center flex-column">
       <Container>
         <Row>
             <Col xs={2} className="col-2 align-self-center d-flex justify-content-start ps-0 flex-column">
@@ -47,13 +48,13 @@ const Header = (/* props: Props */) => {
                   />
                 </div>
               )}
-              {isMenuOpen && <DropDownMenu toggleDropDown={toggleDropDown} />}
+              {isMenuOpen && <DropDownMenu toggleDropDown={toggleDropDown} headerRef={headerRef} isMenuOpen={isMenuOpen} />}
   
               <SearchBar classes="d-none d-lg-flex" />
               <p className={styles.date}>{date}</p>
             </Col>
           <Col xs={8}>
-            <NavLink to='/'><h1 className={`${styles.h1}`}>The New York Times</h1></NavLink>
+            <NavLink to='/'><h1 className={`${styles.h1}`} onClick={() => toggleDropDown()}>The New York Times</h1></NavLink>
           </Col>
           <Col xs={2} className="align-self-center d-flex justify-content-end pe-0">
             <p className={`${styles.currentSection} d-none d-lg-block`}>{formatSectionName(currentSection as SectionType)}</p>
