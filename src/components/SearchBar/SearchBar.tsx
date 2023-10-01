@@ -14,9 +14,6 @@ const SearchBar: React.FC<Props> = ({ classes }) => {
     e.preventDefault();
     e.currentTarget.reset();
 
-    console.log('diocan');
-    
-
     if (query) {
       setQuery("");
       navigate(`/search/${query}`);
