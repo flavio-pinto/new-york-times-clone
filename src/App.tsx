@@ -5,6 +5,7 @@ import './App.css'
 import Header from './components/Header/Header'
 import HomeAndSectionsPage from "./Pages/HomeAndSectionsPage/HomeAndSectionsPage";
 import Error from "./Pages/Error/Error";
+import SearchResultsPage from "./Pages/SearchResultsPage/SearchResultsPage";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Routes>
           <Route path="/" element={<HomeAndSectionsPage />} />
           <Route path="/section/:sectionName" element={<HomeAndSectionsPage />} />
+          <Route path="/search/:query" element={<SearchResultsPage />} />
           <Route path="*" element={<Error />} />
         </Routes>
       </Router>

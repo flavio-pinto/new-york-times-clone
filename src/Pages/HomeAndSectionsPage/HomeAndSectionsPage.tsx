@@ -8,6 +8,7 @@ import { RingLoader } from "react-spinners";
 import { useGlobalContext } from "../../contexts/globalContext";
 import { useEffect } from "react";
 import { SectionType } from "../../contexts/context";
+import MainDate from "../../components/MainDate/MainDate";
 /* type Props = {} */
 
 const HomeAndSectionsPage = (/* props: Props */) => {
@@ -28,13 +29,6 @@ const HomeAndSectionsPage = (/* props: Props */) => {
 
   const { isDataReady, news } = useFetchNewsData(url);
 
-  const date = new Date().toLocaleDateString("en-En", {
-    year: "numeric",
-    month: "long",
-    day: "numeric",
-    weekday: "long",
-  });
-
   console.log(sectionName);
   console.log(news);
 
@@ -45,7 +39,7 @@ const HomeAndSectionsPage = (/* props: Props */) => {
 
     return (
       <>
-        <p className={`${styles.mainDate} d-lg-none`}>{date}</p>
+        <MainDate />
         <h2 className={`${styles.currentSection} d-block d-lg-none`}>{sectionName}</h2>
         <main className={styles.mainNewsSection}>
           <Container>
