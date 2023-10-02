@@ -4,6 +4,10 @@
   margin-bottom: 26px;
 }
 
+.articleWrapper:hover h3 {
+  color: #c7c7c7;
+}
+
 .articleHeightHandler {
   max-height: 830px;
 }
