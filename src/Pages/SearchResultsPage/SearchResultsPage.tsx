@@ -22,8 +22,9 @@ const SearchResultsPage = (/* props: Props */) => {
     return (
       <>
         <MainDate />
-        <main className={styles.mainNewsSection}>
+        <main className={`${styles.mainNewsSection} ps-0`}>
           <Container>
+            <p className={styles.showingResults}>Showing results for: <span>{query}</span></p>
             <Row>
               {news.map((article, index: number) => (
                 <Col xs={12} md={6} key={index} className={`${index % 2 === 0 && styles.newsBorder} ${index % 2 === 0 ? "ps-md-0" : "pe-md-0"} my-3`}>
