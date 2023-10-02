@@ -6,6 +6,14 @@
 
 .showingResults {
   font-style: italic;
+}
+
+.noResults {
+  font-size: 30px;
+}
+
+.showingResults,
+.noResults {
   text-align: center;
 }
 
@@ -14,6 +22,8 @@
   font-weight: bold;
   font-style: normal;
 }
+
+
 
 @media screen and (min-width: 768px) {
   .mainNewsSection {
