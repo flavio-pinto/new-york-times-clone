@@ -54,7 +54,7 @@ const Header = (/* props: Props */) => {
               <p className={styles.date}>{date}</p>
             </Col>
           <Col xs={8}>
-            <NavLink to='/'><h1 className={`${styles.h1}`} onClick={() => toggleDropDown()}>The New York Times</h1></NavLink>
+            <NavLink to='/'><h1 className={`${styles.h1}`} onClick={() => setIsMenuOpen(false)}>The New York Times</h1></NavLink>
           </Col>
           <Col xs={2} className="align-self-center d-flex justify-content-end pe-0">
             <p className={`${styles.currentSection} d-none d-lg-block`}>{formatSectionName(currentSection as SectionType)}</p>

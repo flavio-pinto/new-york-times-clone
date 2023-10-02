@@ -1,0 +1,15 @@
+.mainNewsSection {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 8px 15px 3px;
+}
+
+@media screen and (min-width: 768px) {
+  .mainNewsSection {
+    padding: 10px 15px 6px;
+  }
+
+  .newsBorder {
+    border-right: 1px solid #c7c7c7;
+  }
+}

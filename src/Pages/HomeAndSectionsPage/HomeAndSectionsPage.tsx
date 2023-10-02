@@ -25,12 +25,12 @@ const HomeAndSectionsPage = (/* props: Props */) => {
 
   const url = `https://api.nytimes.com/svc/topstories/v2/${
     !sectionName ? "home" : sectionName
-  }.json?api-key=${import.meta.env.VITE_API_KEY}`;
+  }.json?api-key=${import.meta.env.VITE_API_KEY}`
 
-  const { isDataReady, news } = useFetchNewsData(url);
+  const { isDataReady, news } = useFetchNewsData(url, false)
 
-  console.log(sectionName);
-  console.log(news);
+  console.log(sectionName)
+  console.log(news)
 
   if (isDataReady) {
     const totalNewsCount = news.length;
@@ -55,16 +55,16 @@ const HomeAndSectionsPage = (/* props: Props */) => {
                     0,
                     !isSmallViewport ? leftColumnCount : news.length - 1
                   )
-                  .map((article: News, index: number) => (
-                    <Link key={index} target="_blank" to={article.url}>
-                      <SingleNews article={article} isSmall={false} />
+                  .map((article, index: number) => (
+                    <Link key={index} target="_blank" to={(article as News).url}>
+                      <SingleNews article={article as News} isSmall={false} />
                     </Link>
                   ))}
               </Col>
               <Col lg={3} className="pe-lg-0 ps-lg-3 d-none d-lg-block">
                 {news.slice(leftColumnCount).map((article, index) => (
-                  <Link to={article.url} target="_blank" key={index}>
-                    <SingleNews article={article} isSmall={true} />
+                  <Link to={(article as News).url} target="_blank" key={index}>
+                    <SingleNews article={article as News} isSmall={true} />
                   </Link>
                 ))}
               </Col>
