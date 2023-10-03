@@ -4,7 +4,8 @@ import styles from "./Footer.module.css";
 import { Col, Container, ListGroup, Row } from "react-bootstrap";
 import { AppContextType, SectionType } from "../../contexts/context";
 import { useGlobalContext } from "../../contexts/globalContext";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
+import { BsCodeSquare, BsGithub, BsLinkedin, BsFillHeartFill } from "react-icons/bs";
 
 const Footer = (/* props: Props */) => {
   const context = useGlobalContext();
@@ -35,6 +36,12 @@ const Footer = (/* props: Props */) => {
                 })}
                 <ListGroup.Item></ListGroup.Item>
               </ListGroup>
+              <h4 className={styles.madeBy}>Made with <BsFillHeartFill /> by Flavio Pinto</h4>
+              <Col xs={12} className={styles.footerIcons}>
+                <Link to="https://github.com/flavio-pinto" target="_blank"><BsGithub/></Link>
+                <Link to="#" target="_blank"><BsLinkedin/></Link>
+                <Link to="#" target="_blank"><BsCodeSquare/></Link>
+              </Col>
             </div>
           </Col>
         </Row>
