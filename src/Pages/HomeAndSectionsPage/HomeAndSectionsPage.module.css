@@ -6,6 +6,7 @@
 
 .mainRowCorrect {
   max-width: 1200px;
+
 }
 
 .currentSection {
@@ -16,7 +17,7 @@
 }
 
 .verticalLine {
-  border-right: 1px solid #c7c7c7;
+  border-right: none;
 }
 
 @media screen and (min-width: 768px) {
@@ -26,10 +27,6 @@
 }
 
 @media screen and (min-width: 992px) {
-  /* .mainNewsSection {
-    padding: 3%;
-  } */
-
   .verticalLine {
     border-right: 1px solid #c7c7c7;
   }

@@ -5,8 +5,8 @@ import Placeholder from "../../assets/images/placeholder.png"
 import styles from "./SingleNews.module.css";
 
 type SingleNewsProps = {
-  article: News;
-  isSmall: boolean;
+  article: News
+  isSmall: boolean
 };
 
 const SingleNews = (props: SingleNewsProps) => {

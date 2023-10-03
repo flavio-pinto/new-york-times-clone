@@ -6,6 +6,7 @@ import Header from './components/Header/Header'
 import HomeAndSectionsPage from "./Pages/HomeAndSectionsPage/HomeAndSectionsPage";
 import Error from "./Pages/Error/Error";
 import SearchResultsPage from "./Pages/SearchResultsPage/SearchResultsPage";
+import Footer from "./components/Footer/Footer";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
           <Route path="/search/:query" element={<SearchResultsPage />} />
           <Route path="*" element={<Error />} />
         </Routes>
+        <Footer />
       </Router>
     </div>
   )

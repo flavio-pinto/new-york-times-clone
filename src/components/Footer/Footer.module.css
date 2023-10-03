@@ -1,0 +1,45 @@
+@font-face {
+  font-family: 'Chomsky';
+  src: url('../../assets/fonts/chomsky/chomsky.woff') format('truetype');
+}
+
+.footer {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 8px 15px 3px;
+  text-align: center;
+  font-size: 12px;
+  border-top: 1px solid #c7c7c7;
+}
+
+.footer h2 {
+  font-family: 'Chomsky';
+  font-size: 30px;
+}
+
+.footer a {
+  text-transform: capitalize;
+}
+
+.footerList {
+  column-count: 3;
+}
+
+.footer li {
+  list-style: none;
+  margin-bottom: 30px;
+}
+
+@media screen and (min-width: 768px) {
+  .footer {
+    padding: 10px 15px 6px;;
+  }
+}
+
+
+@media screen and (min-width: 992px) {
+  .footerList {
+    column-count: 5;
+  }
+}
