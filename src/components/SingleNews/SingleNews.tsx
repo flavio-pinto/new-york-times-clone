@@ -7,11 +7,12 @@ import styles from "./SingleNews.module.css";
 type SingleNewsProps = {
   article: News
   isSmall: boolean
+  isLast: boolean
 };
 
 const SingleNews = (props: SingleNewsProps) => {
   return (
-    <article className={styles.articleWrapper}>
+    <article className={`${styles.articleWrapper} ${props.isLast ? styles.lastArticleWrapper : ''}`}>
       <Container>
         <Row>
           <Col

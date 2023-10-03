@@ -12,8 +12,8 @@ import MainDate from "../../components/MainDate/MainDate";
 /* type Props = {} */
 
 const HomeAndSectionsPage = (/* props: Props */) => {
-  const { sectionName } = useParams()
-  const { setCurrentSection } = useGlobalContext()
+  const { sectionName } = useParams();
+  const { setCurrentSection } = useGlobalContext();
 
   useEffect(() => {
     if (sectionName) {
@@ -25,12 +25,12 @@ const HomeAndSectionsPage = (/* props: Props */) => {
 
   const url = `https://api.nytimes.com/svc/topstories/v2/${
     !sectionName ? "home" : sectionName
-  }.json?api-key=${import.meta.env.VITE_API_KEY}`
+  }.json?api-key=${import.meta.env.VITE_API_KEY}`;
 
-  const { isDataReady, news } = useFetchNewsData(url, false)
+  const { isDataReady, news } = useFetchNewsData(url, false);
 
-  console.log(sectionName)
-  console.log(news)
+  console.log(sectionName);
+  console.log(news);
 
   if (isDataReady) {
     const totalNewsCount = news.length;
@@ -40,7 +40,9 @@ const HomeAndSectionsPage = (/* props: Props */) => {
     return (
       <>
         <MainDate />
-        <h2 className={`${styles.currentSection} d-block d-lg-none`}>{sectionName}</h2>
+        <h2 className={`${styles.currentSection} d-block d-lg-none`}>
+          {sectionName}
+        </h2>
         <main className={styles.mainNewsSection}>
           <Container>
             <Row className={styles.mainRowCorrect}>
@@ -56,15 +58,30 @@ const HomeAndSectionsPage = (/* props: Props */) => {
                     !isSmallViewport ? leftColumnCount : news.length - 1
                   )
                   .map((article, index: number) => (
-                    <Link key={index} target="_blank" to={(article as News).url}>
-                      <SingleNews article={article as News} isSmall={false} />
+                    <Link
+                      key={index}
+                      target="_blank"
+                      to={(article as News).url}
+                    >
+                      <SingleNews
+                        article={article as News}
+                        isSmall={false}
+                        isLast={
+                          index === leftColumnCount - 1 &&
+                          leftColumnCount !== totalNewsCount
+                        }
+                      />
                     </Link>
                   ))}
               </Col>
               <Col lg={3} className="pe-lg-0 ps-lg-3 d-none d-lg-block">
                 {news.slice(leftColumnCount).map((article, index) => (
                   <Link to={(article as News).url} target="_blank" key={index}>
-                    <SingleNews article={article as News} isSmall={true} />
+                    <SingleNews
+                      article={article as News}
+                      isSmall={true}
+                      isLast={index === news.length - leftColumnCount - 1}
+                    />
                   </Link>
                 ))}
               </Col>
