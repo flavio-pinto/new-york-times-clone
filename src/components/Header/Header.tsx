@@ -14,7 +14,7 @@ import { SectionType } from '../../contexts/context'
 
 const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
-  const { currentSection, formatSectionName } = useGlobalContext()
+  const { currentSection, formatSectionName, setCurrentSection } = useGlobalContext()
   const headerRef = useRef(null)
 
   const toggleDropDown = () => {
@@ -49,7 +49,7 @@ const Header: React.FC = () => {
               )}
               {isMenuOpen && <DropDownMenu toggleDropDown={toggleDropDown} headerRef={headerRef} isMenuOpen={isMenuOpen} />}
   
-              <SearchBar classes="d-none d-lg-flex" />
+              <SearchBar classes="d-none d-lg-flex" setCurrentSection={setCurrentSection} />
               <p className={styles.date}>{date}</p>
             </Col>
           <Col xs={8}>

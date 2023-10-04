@@ -1,12 +1,14 @@
 import { useNavigate } from "react-router-dom"
 import styles from "./SearchBar.module.css"
 import { ChangeEvent, FormEvent, useState } from "react"
+import { SectionType } from "../../contexts/context"
 
 type Props = {
   classes: string
+  setCurrentSection: (section: SectionType | null) => void;
 }
 
-const SearchBar: React.FC<Props> = ({ classes }) => {
+const SearchBar: React.FC<Props> = ({ classes, setCurrentSection }) => {
   const navigate = useNavigate()
   const [query, setQuery] = useState("")
 
@@ -16,6 +18,7 @@ const SearchBar: React.FC<Props> = ({ classes }) => {
 
     if (query) {
       setQuery("")
+      setCurrentSection(null)
       navigate(`/search/${query}`)
     }
   }
