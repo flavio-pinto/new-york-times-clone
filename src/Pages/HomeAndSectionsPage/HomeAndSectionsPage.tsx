@@ -1,31 +1,31 @@
-import SingleNews from "../../components/SingleNews/SingleNews";
-import useFetchNewsData from "../../services/fetchNewsData";
-import { News } from "../../interfaces/News";
-import styles from "./HomeAndSectionsPage.module.css";
-import { Col, Container, Row } from "react-bootstrap";
-import { Link, useParams } from "react-router-dom";
-import { RingLoader } from "react-spinners";
-import { useGlobalContext } from "../../contexts/globalContext";
-import { useEffect } from "react";
-import { SectionType } from "../../contexts/context";
-import MainDate from "../../components/MainDate/MainDate";
+import SingleNews from "../../components/SingleNews/SingleNews"
+import useFetchNewsData from "../../services/fetchNewsData"
+import { News } from "../../interfaces/News"
+import styles from "./HomeAndSectionsPage.module.css"
+import { Col, Container, Row } from "react-bootstrap"
+import { Link, useParams } from "react-router-dom"
+import { RingLoader } from "react-spinners"
+import { useGlobalContext } from "../../contexts/globalContext"
+import { useEffect } from "react"
+import { SectionType } from "../../contexts/context"
+import MainDate from "../../components/MainDate/MainDate"
 /* type Props = {} */
 
 const HomeAndSectionsPage = (/* props: Props */) => {
-  const { sectionName } = useParams();
-  const { setCurrentSection } = useGlobalContext();
+  const { sectionName } = useParams()
+  const { setCurrentSection } = useGlobalContext()
 
   useEffect(() => {
     if (sectionName) {
-      setCurrentSection(sectionName as SectionType); // Aggiungi l'assertion as SectionType
+      setCurrentSection(sectionName as SectionType)
     } else {
-      setCurrentSection(null);
+      setCurrentSection(null)
     }
-  }, [sectionName, setCurrentSection]);
+  }, [sectionName, setCurrentSection])
 
   const url = `https://api.nytimes.com/svc/topstories/v2/${
     !sectionName ? "home" : sectionName
-  }.json?api-key=${import.meta.env.VITE_API_KEY}`;
+  }.json?api-key=${import.meta.env.VITE_API_KEY}`
 
   const { isDataReady, news } = useFetchNewsData(url, false);
 
@@ -34,7 +34,7 @@ const HomeAndSectionsPage = (/* props: Props */) => {
 
   if (isDataReady) {
     const totalNewsCount = news.length;
-    const leftColumnCount = Math.ceil(totalNewsCount * 0.3);
+    const leftColumnCount = Math.ceil(totalNewsCount * 0.3)
     const isSmallViewport = window.innerWidth < 992;
 
     return (
