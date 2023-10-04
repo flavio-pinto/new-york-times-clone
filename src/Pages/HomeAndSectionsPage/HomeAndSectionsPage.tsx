@@ -10,8 +10,8 @@ import { useEffect, useState } from "react"
 import { SectionType } from "../../contexts/context"
 import MainDate from "../../components/MainDate/MainDate"
 
-const HomeAndSectionsPage = () => {
-  const { sectionName } = useParams()
+const HomeAndSectionsPage: React.FC = () => {
+  const { sectionName } = useParams<{ sectionName: string }>()
   const { setCurrentSection } = useGlobalContext()
   const [windowWidth, setWindowWidth] = useState(window.innerWidth)
 
@@ -44,9 +44,9 @@ const HomeAndSectionsPage = () => {
   const { isDataReady, news } = useFetchNewsData(url, false)
 
   if (isDataReady) {
-    const totalNewsCount = news.length
-    const leftColumnCount = Math.ceil(totalNewsCount * 0.3)
-    const isSmallViewport = windowWidth < 992
+    const totalNewsCount: number = news.length
+    const leftColumnCount: number = Math.ceil(totalNewsCount * 0.3)
+    const isSmallViewport: boolean  = windowWidth < 992
 
     return (
       <>

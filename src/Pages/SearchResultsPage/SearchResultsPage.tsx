@@ -1,27 +1,18 @@
-import { Link, useParams } from "react-router-dom";
-import MainDate from "../../components/MainDate/MainDate";
-import useFetchNewsData from "../../services/fetchNewsData";
-import { Col, Container, Row } from "react-bootstrap";
-import SingleNewsFromSearch from "../../components/SingleNewsFromSearch/SingleNewsFromSearch";
-import { NewsFromSearch } from "../../interfaces/NewsFromSearch";
-import styles from "./SearchResultsPage.module.css";
-import { RingLoader } from "react-spinners";
+import { Link, useParams } from "react-router-dom"
+import MainDate from "../../components/MainDate/MainDate"
+import useFetchNewsData from "../../services/fetchNewsData"
+import { Col, Container, Row } from "react-bootstrap"
+import SingleNewsFromSearch from "../../components/SingleNewsFromSearch/SingleNewsFromSearch"
+import { NewsFromSearch } from "../../interfaces/NewsFromSearch"
+import styles from "./SearchResultsPage.module.css"
+import { RingLoader } from "react-spinners"
 
-/* type Props = {} */
-
-const SearchResultsPage = (/* props: Props */) => {
-  const { query } = useParams()
+const SearchResultsPage = () => {
+  const { query } = useParams<{ query: string }>()
   const url = `https://api.nytimes.com/svc/search/v2/articlesearch.json?q=${query}&api-key=${
     import.meta.env.VITE_API_KEY
-  }`;
-  const { isDataReady, news } = useFetchNewsData(url, true);
-
-  console.log(query, url);
-  console.log(news);
-
-  /* if(news.length === 0) {
-    navigate('*')
-  } */
+  }`
+  const { isDataReady, news } = useFetchNewsData(url, true)
 
   if (news.length === 0) {
     return (
@@ -34,7 +25,7 @@ const SearchResultsPage = (/* props: Props */) => {
           </Container>
         </main>
       </>
-    );
+    )
   }
 
   if (isDataReady) {
@@ -56,7 +47,7 @@ const SearchResultsPage = (/* props: Props */) => {
           </Container>
         </main>
       </>
-    );
+    )
   } else {
     return (
       <RingLoader
@@ -64,8 +55,8 @@ const SearchResultsPage = (/* props: Props */) => {
         size={180}
         aria-label="Loading Spinner"
       />
-    );
+    )
   }
-};
+}
 
-export default SearchResultsPage;
+export default SearchResultsPage

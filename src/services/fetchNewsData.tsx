@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react"
 import axios from "axios"
-import { useNavigate } from "react-router-dom";
-import { News } from "../interfaces/News";
-import { NewsFromSearch } from "../interfaces/NewsFromSearch";
+import { useNavigate } from "react-router-dom"
+import { News } from "../interfaces/News"
+import { NewsFromSearch } from "../interfaces/NewsFromSearch"
 
 const useFetchNewsData = (apiUrl: string, isSearch: boolean) => {
   const [news, setNews] = useState<(News | NewsFromSearch)[]>([])
@@ -15,13 +15,13 @@ const useFetchNewsData = (apiUrl: string, isSearch: boolean) => {
 
     const fetchData = async () => {
       try {
-        const response = await axios.get(apiUrl);
+        const response = await axios.get(apiUrl)
         console.log(response.data)
-        setNews(!isSearch ? response.data.results : response.data.response.docs);
-        setIsDataReady(true);
+        setNews(!isSearch ? response.data.results : response.data.response.docs)
+        setIsDataReady(true)
       } catch (error) {
-        console.error(error);
-        navigate('*');
+        console.error(error)
+        navigate('*')
       }
     }  
 
