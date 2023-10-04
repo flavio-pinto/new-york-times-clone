@@ -6,7 +6,7 @@ import { Col, Container, Row } from "react-bootstrap"
 import { Link, useParams } from "react-router-dom"
 import { RingLoader } from "react-spinners"
 import { useGlobalContext } from "../../contexts/globalContext"
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 import { SectionType } from "../../contexts/context"
 import MainDate from "../../components/MainDate/MainDate"
 /* type Props = {} */
@@ -14,6 +14,21 @@ import MainDate from "../../components/MainDate/MainDate"
 const HomeAndSectionsPage = (/* props: Props */) => {
   const { sectionName } = useParams()
   const { setCurrentSection } = useGlobalContext()
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth)
+
+  useEffect(() => {
+    setWindowWidth(window.innerWidth)
+
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth)
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, [])
 
   useEffect(() => {
     if (sectionName) {
@@ -35,7 +50,7 @@ const HomeAndSectionsPage = (/* props: Props */) => {
   if (isDataReady) {
     const totalNewsCount = news.length;
     const leftColumnCount = Math.ceil(totalNewsCount * 0.3)
-    const isSmallViewport = window.innerWidth < 992;
+    const isSmallViewport = windowWidth < 992
 
     return (
       <>
