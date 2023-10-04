@@ -45,8 +45,12 @@ const HomeAndSectionsPage: React.FC = () => {
 
   if (isDataReady) {
     const totalNewsCount: number = news.length
-    const leftColumnCount: number = Math.ceil(totalNewsCount * 0.3)
-    const isSmallViewport: boolean  = windowWidth < 992
+    
+    // Faccio un filtro in modo tale da evitare che vengano renderizzate notizie senza titolo (è un difetto della API)
+    const filteredNews = news.filter((article) => (article as News).title)
+
+    const leftColumnCount: number = Math.ceil(filteredNews.length * 0.3)
+    const isSmallViewport: boolean = windowWidth < 992
 
     return (
       <>
@@ -63,10 +67,10 @@ const HomeAndSectionsPage: React.FC = () => {
                   !isSmallViewport && styles.verticalLine
                 } ps-lg-0 pe-lg-3`}
               >
-                {news
+                {filteredNews
                   .slice(
                     0,
-                    !isSmallViewport ? leftColumnCount : news.length - 1
+                    !isSmallViewport ? leftColumnCount : filteredNews.length - 1
                   )
                   .map((article, index: number) => (
                     <Link
@@ -86,12 +90,12 @@ const HomeAndSectionsPage: React.FC = () => {
                   ))}
               </Col>
               <Col lg={3} className="pe-lg-0 ps-lg-3 d-none d-lg-block">
-                {news.slice(leftColumnCount).map((article, index) => (
+                {filteredNews.slice(leftColumnCount).map((article, index) => (
                   <Link to={(article as News).url} target="_blank" key={index}>
                     <SingleNews
                       article={article as News}
                       isSmall={true}
-                      isLast={index === news.length - leftColumnCount - 1}
+                      isLast={index === filteredNews.length - leftColumnCount - 1}
                     />
                   </Link>
                 ))}
