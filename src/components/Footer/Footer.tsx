@@ -1,19 +1,19 @@
 import styles from "./Footer.module.css";
-/* type Props = {} */
 
 import { Col, Container, ListGroup, Row } from "react-bootstrap";
 import { AppContextType, SectionType } from "../../contexts/context";
 import { useGlobalContext } from "../../contexts/globalContext";
-import { Link, NavLink } from "react-router-dom";
-import { BsCodeSquare, BsGithub, BsLinkedin, BsFillHeartFill } from "react-icons/bs";
+import { NavLink } from "react-router-dom";
+import {
+  BsCodeSquare,
+  BsGithub,
+  BsLinkedin,
+  BsFillHeartFill,
+} from "react-icons/bs";
 
-const Footer = (/* props: Props */) => {
-  const context = useGlobalContext();
-  const { sections, formatSectionName }: AppContextType = context;
-
-  if (!context) {
-    return null;
-  }
+const Footer: React.FC = () => {
+  const context = useGlobalContext() as AppContextType;
+  const { sections, formatSectionName }: AppContextType = context ?? {};
 
   return (
     <footer>
@@ -36,11 +36,23 @@ const Footer = (/* props: Props */) => {
                 })}
                 <ListGroup.Item></ListGroup.Item>
               </ListGroup>
-              <h4 className={styles.madeBy}>Made with <BsFillHeartFill /> by Flavio Pinto</h4>
+              <h4 className={styles.madeBy}>
+                Made with <BsFillHeartFill /> by Flavio Pinto
+              </h4>
               <Col xs={12} className={styles.footerIcons}>
-                <Link to="https://github.com/flavio-pinto" target="_blank"><BsGithub/></Link>
-                <Link to="#" target="_blank"><BsLinkedin/></Link>
-                <Link to="#" target="_blank"><BsCodeSquare/></Link>
+                <a
+                  href="https://github.com/flavio-pinto"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <BsGithub />
+                </a>
+                <a href="#" target="_blank" rel="noopener noreferrer">
+                  <BsLinkedin />
+                </a>
+                <a href="#" target="_blank" rel="noopener noreferrer">
+                  <BsCodeSquare />
+                </a>
               </Col>
             </div>
           </Col>

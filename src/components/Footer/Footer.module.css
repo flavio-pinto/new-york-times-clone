@@ -36,8 +36,11 @@
   border-top: 1px solid #c7c7c7;
 }
 
-.footerIcons a:not(:last-child) {
+.footerIcons a {
   font-size: 40px;
+}
+
+.footerIcons a:not(:last-child) {
   margin-right: 20px;
 }
 
