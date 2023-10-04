@@ -1,16 +1,16 @@
-import { Container, Row, Col } from "react-bootstrap";
-import { News } from "../../interfaces/News";
+import { Container, Row, Col } from "react-bootstrap"
+import { News } from "../../interfaces/News"
 import PlaceholderSmall from "../../assets/images/placeholder-small.png"
 import Placeholder from "../../assets/images/placeholder.png"
-import styles from "./SingleNews.module.css";
+import styles from "./SingleNews.module.css"
 
 type SingleNewsProps = {
   article: News
   isSmall: boolean
   isLast: boolean
-};
+}
 
-const SingleNews = (props: SingleNewsProps) => {
+const SingleNews: React.FC<SingleNewsProps> = (props) => {
   return (
     <article className={`${styles.articleWrapper} ${props.isLast ? styles.lastArticleWrapper : ''}`}>
       <Container>
@@ -54,7 +54,7 @@ const SingleNews = (props: SingleNewsProps) => {
         </Row>
       </Container>
     </article>
-  );
-};
+  )
+}
 
-export default SingleNews;
+export default SingleNews

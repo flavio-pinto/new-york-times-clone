@@ -1,12 +1,12 @@
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom"
 import 'normalize.css'
 import 'bootstrap/dist/css/bootstrap-grid.min.css'
 import './App.css'
 import Header from './components/Header/Header'
-import HomeAndSectionsPage from "./Pages/HomeAndSectionsPage/HomeAndSectionsPage";
-import Error from "./Pages/Error/Error";
-import SearchResultsPage from "./Pages/SearchResultsPage/SearchResultsPage";
-import Footer from "./components/Footer/Footer";
+import HomeAndSectionsPage from "./Pages/HomeAndSectionsPage/HomeAndSectionsPage"
+import Error from "./Pages/Error/Error"
+import SearchResultsPage from "./Pages/SearchResultsPage/SearchResultsPage"
+import Footer from "./components/Footer/Footer"
 
 function App() {
   return (

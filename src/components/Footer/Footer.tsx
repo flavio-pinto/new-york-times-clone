@@ -1,19 +1,18 @@
-import styles from "./Footer.module.css";
-
-import { Col, Container, ListGroup, Row } from "react-bootstrap";
-import { AppContextType, SectionType } from "../../contexts/context";
-import { useGlobalContext } from "../../contexts/globalContext";
-import { NavLink } from "react-router-dom";
+import styles from "./Footer.module.css"
+import { Col, Container, ListGroup, Row } from "react-bootstrap"
+import { AppContextType, SectionType } from "../../contexts/context"
+import { useGlobalContext } from "../../contexts/globalContext"
+import { NavLink } from "react-router-dom"
 import {
   BsCodeSquare,
   BsGithub,
   BsLinkedin,
   BsFillHeartFill,
-} from "react-icons/bs";
+} from "react-icons/bs"
 
 const Footer: React.FC = () => {
-  const context = useGlobalContext() as AppContextType;
-  const { sections, formatSectionName }: AppContextType = context ?? {};
+  const context = useGlobalContext() as AppContextType
+  const { sections, formatSectionName }: AppContextType = context ?? {}
 
   return (
     <footer>
@@ -32,7 +31,7 @@ const Footer: React.FC = () => {
                         {formatSectionName(section)}
                       </NavLink>
                     </ListGroup.Item>
-                  );
+                  )
                 })}
                 <ListGroup.Item></ListGroup.Item>
               </ListGroup>
@@ -59,7 +58,7 @@ const Footer: React.FC = () => {
         </Row>
       </Container>
     </footer>
-  );
-};
+  )
+}
 
-export default Footer;
+export default Footer

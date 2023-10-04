@@ -1,6 +1,5 @@
-import { ReactNode, createContext, useState } from "react";
+import { ReactNode, createContext, useState } from "react"
 
-// Definisci il tipo per le sezioni
 export type SectionType =
   | "home"
   | "world"
@@ -16,9 +15,8 @@ export type SectionType =
   | "food"
   | "travel"
   | "t-magazine"
-  | "realestate";
+  | "realestate"
 
-// Definisci il tipo per il contesto
 export interface AppContextType {
   sections: SectionType[]
   formatSectionName: (section: SectionType) => string
@@ -26,10 +24,8 @@ export interface AppContextType {
   setCurrentSection: (section: SectionType | null) => void
 }
 
-// Crea il contesto
-const AppContext = createContext<AppContextType | null>(null);
+const AppContext = createContext<AppContextType | null>(null)
 
-// Definisci il provider del contesto
 const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const [currentSection, setCurrentSection] = useState<SectionType | null>(null)
 
@@ -49,28 +45,28 @@ const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
     "travel",
     "t-magazine",
     "realestate",
-  ];
+  ]
 
   const formatSectionName = (section: SectionType): string => {
     switch (section) {
       case "us":
-        return "U.S.";
+        return "U.S."
       case "nyregion":
-        return "N.Y";
+        return "N.Y"
       case "t-magazine":
-        return "magazine";
+        return "magazine"
       case "realestate":
-        return "real estate";
+        return "real estate"
       default:
-        return section;
+        return section
     }
-  };
+  }
 
   return (
     <AppContext.Provider value={{ sections, formatSectionName, currentSection, setCurrentSection }}>
       {children}
     </AppContext.Provider>
-  );
-};
+  )
+}
 
-export { AppContext, AppProvider };
+export { AppContext, AppProvider }

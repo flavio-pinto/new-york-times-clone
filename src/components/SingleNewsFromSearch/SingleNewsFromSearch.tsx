@@ -1,13 +1,11 @@
-import styles from "./SingleNewsFromSearch.module.css";
-import { NewsFromSearch } from "../../interfaces/NewsFromSearch";
+import styles from "./SingleNewsFromSearch.module.css"
+import { NewsFromSearch } from "../../interfaces/NewsFromSearch"
 
 type SingleNewsProps = {
   article: NewsFromSearch;
-};
+}
 
-const SingleNewsFromSearch = (props: SingleNewsProps) => {
-  console.log(props.article);
-
+const SingleNewsFromSearch: React.FC<SingleNewsProps> = (props) => {
   return (
     <article
       className={`${styles.article} d-flex flex-column justify-content-between`}

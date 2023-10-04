@@ -1,50 +1,47 @@
-import ListGroup from "react-bootstrap/ListGroup";
-import { useGlobalContext } from "../../contexts/globalContext";
-import SearchBar from "../SearchBar/SearchBar";
-import styles from "./DropDownMenu.module.css";
-import { AppContextType, SectionType } from "../../contexts/context";
-import { NavLink } from "react-router-dom";
-import { useEffect, useState } from "react";
+import ListGroup from "react-bootstrap/ListGroup"
+import { useGlobalContext } from "../../contexts/globalContext"
+import SearchBar from "../SearchBar/SearchBar"
+import styles from "./DropDownMenu.module.css"
+import { AppContextType, SectionType } from "../../contexts/context"
+import { NavLink } from "react-router-dom"
+import { useEffect, useState } from "react"
 
 type Props = {
   toggleDropDown: () => void
   isMenuOpen: boolean
-  headerRef: React.RefObject<HTMLDivElement>;
+  headerRef: React.RefObject<HTMLDivElement>
 }
 
 const DropDownMenu: React.FC<Props> = (props: Props) => {
-  const context = useGlobalContext();
+  const context = useGlobalContext()
   const [topPosition, setTopPosition] = useState<number | null>(null)
 
   useEffect(() => {
-    // Get the height of the header element
-    const headerElement = props.headerRef.current;
-    const headerHeight: number | undefined = headerElement?.clientHeight;
+    const headerElement = props.headerRef.current
+    const headerHeight: number | undefined = headerElement?.clientHeight
 
     if (headerHeight !== undefined) {
-      setTopPosition(headerHeight);
+      setTopPosition(headerHeight)
     }
-  }, [props.headerRef]);
+  }, [props.headerRef])
 
   useEffect(() => {
-    // Aggiungi o rimuovi la classe per nascondere lo scroll del body
     if (props.isMenuOpen) {
-      document.body.style.overflow = 'hidden';
+      document.body.style.overflow = 'hidden'
     } else {
-      document.body.style.overflow = 'visible';
+      document.body.style.overflow = 'visible'
     }
 
-    // Pulisci quando il componente viene smontato
     return () => {
-      document.body.style.overflow = 'visible';
-    };
-  }, [props.isMenuOpen]);
+      document.body.style.overflow = 'visible'
+    }
+  }, [props.isMenuOpen])
 
   if (!context) {
-    return null;
+    return null
   }
 
-  const { sections, formatSectionName }: AppContextType = context;
+  const { sections, formatSectionName }: AppContextType = context
 
   return (
     <div className={`${styles.DropDownMenu} py-4`} style={{ top: topPosition ? `${topPosition}px` : 0 }}>
@@ -59,7 +56,7 @@ const DropDownMenu: React.FC<Props> = (props: Props) => {
                   return {
                     fontWeight: isActive ? "bold" : "",
                     color: isPending ? "gray" : "black",
-                  };
+                  }
                 }}
                 to={section === "home" ? "/" : `section/${section}`}
                 onClick={() => props.toggleDropDown()}
@@ -67,11 +64,11 @@ const DropDownMenu: React.FC<Props> = (props: Props) => {
                 {formatSectionName(section)}
               </NavLink>
             </ListGroup.Item>
-          );
+          )
         })}
       </ListGroup>
     </div>
-  );
-};
+  )
+}
 
-export default DropDownMenu;
+export default DropDownMenu

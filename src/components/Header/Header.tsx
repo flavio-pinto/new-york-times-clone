@@ -1,33 +1,32 @@
-import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
-import { RxHamburgerMenu, RxCross1 } from "react-icons/rx";
-import { BsSearch } from "react-icons/bs";
-import DropDownMenu from "../DropDownMenu/DropDownMenu";
-import styles from "./Header.module.css";
-import { useRef, useState } from "react";
-import SearchBar from "../SearchBar/SearchBar";
-import Navbar from "../Navbar/Navbar";
-import { NavLink } from 'react-router-dom';
-import { useGlobalContext } from '../../contexts/globalContext';
-import { SectionType } from '../../contexts/context';
-/* type Props = {} */
+import Container from 'react-bootstrap/Container'
+import Row from 'react-bootstrap/Row'
+import Col from 'react-bootstrap/Col'
+import { RxHamburgerMenu, RxCross1 } from "react-icons/rx"
+import { BsSearch } from "react-icons/bs"
+import DropDownMenu from "../DropDownMenu/DropDownMenu"
+import styles from "./Header.module.css"
+import { useRef, useState } from "react"
+import SearchBar from "../SearchBar/SearchBar"
+import Navbar from "../Navbar/Navbar"
+import { NavLink } from 'react-router-dom'
+import { useGlobalContext } from '../../contexts/globalContext'
+import { SectionType } from '../../contexts/context'
 
-const Header = (/* props: Props */) => {
+const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const { currentSection, formatSectionName } = useGlobalContext()
   const headerRef = useRef(null)
 
   const toggleDropDown = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
+    setIsMenuOpen(!isMenuOpen)
+  }
 
   const date = new Date().toLocaleDateString("en-En", {
     year: "numeric",
     month: "short",
     day: "numeric",
     weekday: "long",
-  });
+  })
 
   return (
     <header ref={headerRef} className="d-flex justify-content-start align-items-center flex-column">
@@ -66,7 +65,7 @@ const Header = (/* props: Props */) => {
       </Container>
       <Navbar />
     </header>
-  );
-};
+  )
+}
 
-export default Header;
+export default Header
