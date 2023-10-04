@@ -7,7 +7,7 @@ import { NewsFromSearch } from "../../interfaces/NewsFromSearch"
 import styles from "./SearchResultsPage.module.css"
 import { RingLoader } from "react-spinners"
 
-const SearchResultsPage = () => {
+const SearchResultsPage: React.FC = () => {
   const { query } = useParams<{ query: string }>()
   const url = `https://api.nytimes.com/svc/search/v2/articlesearch.json?q=${query}&api-key=${
     import.meta.env.VITE_API_KEY
