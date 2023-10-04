@@ -9,9 +9,8 @@ import { useGlobalContext } from "../../contexts/globalContext"
 import { useEffect, useState } from "react"
 import { SectionType } from "../../contexts/context"
 import MainDate from "../../components/MainDate/MainDate"
-/* type Props = {} */
 
-const HomeAndSectionsPage = (/* props: Props */) => {
+const HomeAndSectionsPage = () => {
   const { sectionName } = useParams()
   const { setCurrentSection } = useGlobalContext()
   const [windowWidth, setWindowWidth] = useState(window.innerWidth)
@@ -21,13 +20,13 @@ const HomeAndSectionsPage = (/* props: Props */) => {
 
     const handleResize = () => {
       setWindowWidth(window.innerWidth)
-    };
+    }
 
-    window.addEventListener("resize", handleResize);
+    window.addEventListener("resize", handleResize)
 
     return () => {
-      window.removeEventListener("resize", handleResize);
-    };
+      window.removeEventListener("resize", handleResize)
+    }
   }, [])
 
   useEffect(() => {
@@ -36,19 +35,16 @@ const HomeAndSectionsPage = (/* props: Props */) => {
     } else {
       setCurrentSection(null)
     }
-  }, [sectionName, setCurrentSection])
+  })
 
   const url = `https://api.nytimes.com/svc/topstories/v2/${
     !sectionName ? "home" : sectionName
   }.json?api-key=${import.meta.env.VITE_API_KEY}`
 
-  const { isDataReady, news } = useFetchNewsData(url, false);
-
-  console.log(sectionName);
-  console.log(news);
+  const { isDataReady, news } = useFetchNewsData(url, false)
 
   if (isDataReady) {
-    const totalNewsCount = news.length;
+    const totalNewsCount = news.length
     const leftColumnCount = Math.ceil(totalNewsCount * 0.3)
     const isSmallViewport = windowWidth < 992
 
@@ -104,7 +100,7 @@ const HomeAndSectionsPage = (/* props: Props */) => {
           </Container>
         </main>
       </>
-    );
+    )
   } else {
     return (
       <RingLoader
@@ -112,8 +108,8 @@ const HomeAndSectionsPage = (/* props: Props */) => {
         size={180}
         aria-label="Loading Spinner"
       />
-    );
+    )
   }
-};
+}
 
-export default HomeAndSectionsPage;
+export default HomeAndSectionsPage
