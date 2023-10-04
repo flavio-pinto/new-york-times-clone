@@ -1,9 +1,8 @@
 import styles from "./Error.module.css"
-/* type Props = {} */
 
 import { Col, Container, Row } from "react-bootstrap"
 
-const Error = (/* props: Props */) => {
+const Error = () => {
   return (
     <main className={styles.errorPage}>
       <Container>
