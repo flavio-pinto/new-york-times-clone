@@ -8,10 +8,8 @@ You can see the live demo hosted on Netlify here: [The New York Times Clone](htt
 ### Frontend
 - HTML5
 - CSS3
-- JavaScript
 - TypeScript
-- ReactJS
-- Bootstrap 5
+- React
 - React Bootstrap
 - React Router Dom
 - Axios
