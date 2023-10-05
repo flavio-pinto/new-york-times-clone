@@ -5,10 +5,11 @@ import { SectionType } from "../../contexts/context"
 
 type Props = {
   classes: string
-  setCurrentSection: (section: SectionType | null) => void;
+  setCurrentSection: (section: SectionType | null) => void
+  setIsMenuOpen: React.Dispatch<React.SetStateAction<boolean>>
 }
 
-const SearchBar: React.FC<Props> = ({ classes, setCurrentSection }) => {
+const SearchBar: React.FC<Props> = ({ classes, setCurrentSection, setIsMenuOpen }) => {
   const navigate = useNavigate()
   const [query, setQuery] = useState("")
 
@@ -18,6 +19,7 @@ const SearchBar: React.FC<Props> = ({ classes, setCurrentSection }) => {
 
     if (query) {
       setQuery("")
+      setIsMenuOpen(false)
       setCurrentSection(null)
       navigate(`/search/${query}`)
     }

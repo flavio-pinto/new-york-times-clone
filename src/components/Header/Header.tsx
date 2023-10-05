@@ -47,9 +47,9 @@ const Header: React.FC = () => {
                   />
                 </div>
               )}
-              {isMenuOpen && <DropDownMenu toggleDropDown={toggleDropDown} headerRef={headerRef} isMenuOpen={isMenuOpen} />}
+              {isMenuOpen && <DropDownMenu toggleDropDown={toggleDropDown} headerRef={headerRef} isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} setCurrentSection={setCurrentSection} />}
   
-              <SearchBar classes="d-none d-lg-flex" setCurrentSection={setCurrentSection} />
+              <SearchBar classes="d-none d-lg-flex" setCurrentSection={setCurrentSection} setIsMenuOpen={setIsMenuOpen}/>
               <p className={styles.date}>{date}</p>
             </Col>
           <Col xs={8}>
