@@ -1,27 +1,40 @@
-# React + TypeScript + Vite
+# The New York Times Clone
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Live Demo
+You can see the live demo hosted on Netlify here: [The New York Times Clone](https://newyorktimesclonebyflavio.netlify.app)
 
-Currently, two official plugins are available:
+## Technologies and libraries
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### Frontend
+- HTML5
+- CSS3
+- JavaScript
+- TypeScript
+- ReactJS
+- Bootstrap 5
+- React Bootstrap
+- React Router Dom
+- Axios
+- Vite
+- React Spinners
+- React Icons
 
-## Expanding the ESLint configuration
+## Features
+- News sourced from the official New York Times API
+- News search
+- Dropdown menu on mobile/tablet
+- Browse news by various categories with different routes
+- Responsive design for an optimized experience on different devices
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Screenshots and Videos
 
-- Configure the top-level `parserOptions` property like this:
+### Video
+![Screenshot Desktop](src/assets/images/website.gif)
 
-```js
-   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-   },
-```
+### Screenshots
+![Mobile](src/assets/images/mobile.png)
+![Dropdown Menu](src/assets/images/dropdown.png)
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+## Contacts
+- **Website:** [Your Website](#)
+- **LinkedIn:** [Your LinkedIn Profile](#)
