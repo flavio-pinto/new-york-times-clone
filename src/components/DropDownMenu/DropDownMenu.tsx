@@ -7,7 +7,6 @@ import { NavLink } from "react-router-dom"
 import { useEffect, useState } from "react"
 
 type Props = {
-  toggleDropDown: () => void
   isMenuOpen: boolean
   setIsMenuOpen: React.Dispatch<React.SetStateAction<boolean>>
   setCurrentSection: (section: SectionType | null) => void
@@ -61,7 +60,7 @@ const DropDownMenu: React.FC<Props> = (props: Props) => {
                   }
                 }}
                 to={section === "home" ? "/" : `section/${section}`}
-                onClick={() => props.toggleDropDown()}
+                onClick={() => props.setIsMenuOpen(false)}
               >
                 {formatSectionName(section)}
               </NavLink>

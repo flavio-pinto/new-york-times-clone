@@ -17,10 +17,6 @@ const Header: React.FC = () => {
   const { currentSection, formatSectionName, setCurrentSection } = useGlobalContext()
   const headerRef = useRef(null)
 
-  const toggleDropDown = () => {
-    setIsMenuOpen(!isMenuOpen)
-  }
-
   const date = new Date().toLocaleDateString("en-En", {
     year: "numeric",
     month: "short",
@@ -38,16 +34,16 @@ const Header: React.FC = () => {
                   <RxHamburgerMenu
                     size={25}
                     className="d-lg-none me-2"
-                    onClick={() => toggleDropDown()}
+                    onClick={() => setIsMenuOpen(true)}
                   />
                   <BsSearch
                     size={25}
                     className="d-lg-none"
-                    onClick={() => toggleDropDown()}
+                    onClick={() => setIsMenuOpen(true)}
                   />
                 </div>
               )}
-              {isMenuOpen && <DropDownMenu toggleDropDown={toggleDropDown} headerRef={headerRef} isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} setCurrentSection={setCurrentSection} />}
+              {isMenuOpen && <DropDownMenu headerRef={headerRef} isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} setCurrentSection={setCurrentSection} />}
   
               <SearchBar classes="d-none d-lg-flex" setCurrentSection={setCurrentSection} setIsMenuOpen={setIsMenuOpen}/>
               <p className={styles.date}>{date}</p>
@@ -58,7 +54,7 @@ const Header: React.FC = () => {
           <Col xs={2} className="align-self-center d-flex justify-content-end pe-0">
             <p className={`${styles.currentSection} d-none d-lg-block`}>{formatSectionName(currentSection as SectionType)}</p>
             {isMenuOpen && (
-              <RxCross1 size={25} onClick={() => toggleDropDown()} />
+              <RxCross1 size={25} onClick={() => setIsMenuOpen(false)} />
             )}
           </Col>
         </Row>
