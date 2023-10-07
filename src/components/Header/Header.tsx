@@ -18,7 +18,7 @@ const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const {formatSectionName } = useGlobalContext()
   const headerRef = useRef(null)
-
+  
   useEffect(() => {
     const pathname = location.pathname
     const section = pathname.split('/')
