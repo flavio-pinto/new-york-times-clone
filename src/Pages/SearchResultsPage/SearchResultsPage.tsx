@@ -19,6 +19,11 @@ const SearchResultsPage: React.FC = () => {
     if (news.length === 0) {
       return (
         <>
+          <Helmet>
+            <title>
+              The New York Times - No Search Results
+            </title>
+          </Helmet>
           <MainDate />
           <main className={`${styles.mainNewsSection} ps-0`}>
             <Container>
