@@ -17,7 +17,7 @@ function App() {
           <Route path="/" element={<HomeAndSectionsPage />} />
           <Route path="/section/:sectionName" element={<HomeAndSectionsPage />} />
           <Route path="/search/:query" element={<SearchResultsPage />} />
-          <Route path="*" element={<Error />} />
+          <Route path="/error" element={<Error />} />
         </Routes>
         <Footer />
       </Router>

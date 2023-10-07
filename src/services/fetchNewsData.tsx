@@ -19,7 +19,7 @@ const useFetchNewsData = (apiUrl: string, isSearch: boolean) => {
         setNews(!isSearch ? response.data.results : response.data.response.docs)
         setIsDataReady(true)
       } catch (error) {
-        navigate('*')
+        navigate('/error')
       }
     }  
 
