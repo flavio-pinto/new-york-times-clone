@@ -35,6 +35,8 @@ const HomeAndSectionsPage: React.FC = () => {
     const filteredNews = news.filter((article) => (article as News).title)
 
     const leftColumnCount: number = Math.ceil(filteredNews.length * 0.3)
+
+    //variabile utile per decidere se dividere gli articoli in due colonne o meno
     const isSmallViewport: boolean = window.innerWidth < 992
 
     return (
@@ -47,10 +49,9 @@ const HomeAndSectionsPage: React.FC = () => {
           <Container>
             <Row className={styles.mainRowCorrect}>
               <Col
-                lg={isSmallViewport ? 12 : 9}
-                className={`${
-                  !isSmallViewport && styles.verticalLine
-                } ps-lg-0 pe-lg-3`}
+                xs={12}
+                lg={9}
+                className={`${styles.verticalLine} ps-lg-0 pe-lg-3`}
               >
                 {filteredNews
                   .slice(
