@@ -5,22 +5,10 @@ import styles from "./HomeAndSectionsPage.module.css"
 import { Col, Container, Row } from "react-bootstrap"
 import { Link, useParams } from "react-router-dom"
 import { RingLoader } from "react-spinners"
-import { useGlobalContext } from "../../contexts/globalContext"
-import { useEffect } from "react"
-import { SectionType } from "../../contexts/context"
 import MainDate from "../../components/MainDate/MainDate"
 
 const HomeAndSectionsPage: React.FC = () => {
   const { sectionName } = useParams<{ sectionName: string }>()
-  const { setCurrentSection } = useGlobalContext()
-
-  useEffect(() => {
-    if (sectionName) {
-      setCurrentSection(sectionName as SectionType)
-    } else {
-      setCurrentSection(null)
-    }
-  })
 
   const url = `https://api.nytimes.com/svc/topstories/v2/${
     !sectionName ? "home" : sectionName

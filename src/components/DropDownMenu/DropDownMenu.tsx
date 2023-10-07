@@ -9,7 +9,6 @@ import { useEffect, useState } from "react"
 type Props = {
   isMenuOpen: boolean
   setIsMenuOpen: React.Dispatch<React.SetStateAction<boolean>>
-  setCurrentSection: (section: SectionType | null) => void
   headerRef: React.RefObject<HTMLDivElement>
 }
 
@@ -46,7 +45,7 @@ const DropDownMenu: React.FC<Props> = (props: Props) => {
 
   return (
     <div className={`${styles.DropDownMenu} py-4`} style={{ top: topPosition ? `${topPosition}px` : 0 }}>
-      <SearchBar setCurrentSection={props.setCurrentSection} setIsMenuOpen={props.setIsMenuOpen} classes={`${styles.searchBarDropDown} d-flex`} />
+      <SearchBar setIsMenuOpen={props.setIsMenuOpen} classes={`${styles.searchBarDropDown} d-flex`} />
       <h3 className={styles.dropdownNewsTitle}>News</h3>
       <ListGroup as="ul" className={styles.dropdownList}>
         {sections.map((section: SectionType, i: number) => {

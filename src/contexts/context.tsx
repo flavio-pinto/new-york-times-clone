@@ -1,4 +1,4 @@
-import { ReactNode, createContext, useState } from "react"
+import { ReactNode, createContext } from "react"
 
 export type SectionType =
   | "home"
@@ -20,14 +20,11 @@ export type SectionType =
 export interface AppContextType {
   sections: SectionType[]
   formatSectionName: (section: SectionType) => string
-  currentSection: SectionType | null
-  setCurrentSection: (section: SectionType | null) => void
 }
 
 const AppContext = createContext<AppContextType | null>(null)
 
 const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
-  const [currentSection, setCurrentSection] = useState<SectionType | null>(null)
 
   const sections: SectionType[] = [
     "home",
@@ -63,7 +60,7 @@ const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   }
 
   return (
-    <AppContext.Provider value={{ sections, formatSectionName, currentSection, setCurrentSection }}>
+    <AppContext.Provider value={{ sections, formatSectionName }}>
       {children}
     </AppContext.Provider>
   )
