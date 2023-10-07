@@ -6,28 +6,13 @@ import { Col, Container, Row } from "react-bootstrap"
 import { Link, useParams } from "react-router-dom"
 import { RingLoader } from "react-spinners"
 import { useGlobalContext } from "../../contexts/globalContext"
-import { useEffect, useState } from "react"
+import { useEffect } from "react"
 import { SectionType } from "../../contexts/context"
 import MainDate from "../../components/MainDate/MainDate"
 
 const HomeAndSectionsPage: React.FC = () => {
   const { sectionName } = useParams<{ sectionName: string }>()
   const { setCurrentSection } = useGlobalContext()
-  const [windowWidth, setWindowWidth] = useState(window.innerWidth)
-
-  useEffect(() => {
-    setWindowWidth(window.innerWidth)
-
-    const handleResize = () => {
-      setWindowWidth(window.innerWidth)
-    }
-
-    window.addEventListener("resize", handleResize)
-
-    return () => {
-      window.removeEventListener("resize", handleResize)
-    }
-  }, [])
 
   useEffect(() => {
     if (sectionName) {
@@ -50,7 +35,7 @@ const HomeAndSectionsPage: React.FC = () => {
     const filteredNews = news.filter((article) => (article as News).title)
 
     const leftColumnCount: number = Math.ceil(filteredNews.length * 0.3)
-    const isSmallViewport: boolean = windowWidth < 992
+    const isSmallViewport: boolean = window.innerWidth < 992
 
     return (
       <>
