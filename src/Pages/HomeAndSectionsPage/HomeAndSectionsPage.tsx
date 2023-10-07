@@ -6,9 +6,15 @@ import { Col, Container, Row } from "react-bootstrap"
 import { Link, useParams } from "react-router-dom"
 import { RingLoader } from "react-spinners"
 import MainDate from "../../components/MainDate/MainDate"
+import { Helmet } from "react-helmet"
+import { AppContextType, SectionType } from "../../contexts/context"
+import { useGlobalContext } from "../../contexts/globalContext"
 
 const HomeAndSectionsPage: React.FC = () => {
   const { sectionName } = useParams<{ sectionName: string }>()
+  
+  const context = useGlobalContext()
+  const { formatSectionName }: AppContextType = context ?? {}
 
   const url = `https://api.nytimes.com/svc/topstories/v2/${
     !sectionName ? "home" : sectionName
@@ -18,7 +24,7 @@ const HomeAndSectionsPage: React.FC = () => {
 
   if (isDataReady) {
     const totalNewsCount: number = news.length
-    
+
     // Faccio un filtro in modo tale da evitare che vengano renderizzate notizie senza titolo (è un difetto della API)
     const filteredNews = news.filter((article) => (article as News).title)
 
@@ -29,6 +35,20 @@ const HomeAndSectionsPage: React.FC = () => {
 
     return (
       <>
+        <Helmet>
+          <title>
+            The New York Times
+            {sectionName
+              ? ' - ' +
+                formatSectionName(sectionName as SectionType)
+                  .split(' ')
+                  .map(
+                    (word) => word.charAt(0).toLocaleUpperCase() + word.slice(1)
+                  )
+                  .join(' ')
+              : ''}
+          </title>
+        </Helmet>
         <MainDate />
         <h2 className={`${styles.currentSection} d-block d-lg-none`}>
           {sectionName}
@@ -69,7 +89,9 @@ const HomeAndSectionsPage: React.FC = () => {
                     <SingleNews
                       article={article as News}
                       isSmall={true}
-                      isLast={index === filteredNews.length - leftColumnCount - 1}
+                      isLast={
+                        index === filteredNews.length - leftColumnCount - 1
+                      }
                     />
                   </Link>
                 ))}
