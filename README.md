@@ -34,5 +34,5 @@ You can see the live demo hosted on Netlify here: [The New York Times Clone](htt
 ![Dropdown Menu](src/assets/images/dropdown.png)
 
 ## Contacts
-- **Website:** [My Website](#)
+- **Website:** [My Website](https://flavio-pinto.github.io/portfolio/)
 - **LinkedIn:** [My LinkedIn Profile](#)
