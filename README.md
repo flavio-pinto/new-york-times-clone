@@ -34,5 +34,5 @@ You can see the live demo hosted on Netlify here: [The New York Times Clone](htt
 ![Dropdown Menu](src/assets/images/dropdown.png)
 
 ## Contacts
-- **Website:** [Your Website](#)
-- **LinkedIn:** [Your LinkedIn Profile](#)
+- **Website:** [My Website](#)
+- **LinkedIn:** [My LinkedIn Profile](#)
