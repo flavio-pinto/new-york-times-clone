@@ -46,10 +46,10 @@ const Footer: React.FC = () => {
                 >
                   <BsGithub />
                 </a>
-                <a href="#" target="_blank" rel="noopener noreferrer">
+                <a href="https://www.linkedin.com/in/flaviopinto-dev/" target="_blank" rel="noopener noreferrer">
                   <BsLinkedin />
                 </a>
-                <a href="#" target="_blank" rel="noopener noreferrer">
+                <a href="https://flavio-pinto.github.io/portfolio/" target="_blank" rel="noopener noreferrer">
                   <BsCodeSquare />
                 </a>
               </Col>
